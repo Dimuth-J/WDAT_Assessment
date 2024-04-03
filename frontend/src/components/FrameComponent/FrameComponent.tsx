@@ -16,7 +16,7 @@ const FrameComponent: FunctionComponent = () => {
             <div className="view-all-task text-light">View All Task</div>
         </a>
 
-        <a href="#" className="group-div" >
+        <a href="../Trash" className="group-div" >
             <div className="rectangle-div" />
             <div className="trash text-light">Trash</div>
         </a>

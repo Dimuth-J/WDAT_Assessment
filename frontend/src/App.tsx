@@ -25,7 +25,7 @@ function App() {
         <Routes>
           
           <Route
-            path="/Home" element={<Desktop />}
+            path="/" element={<Desktop />}
           />
           <Route
             path="/AllTaskView" element={<AllTaskView />}
