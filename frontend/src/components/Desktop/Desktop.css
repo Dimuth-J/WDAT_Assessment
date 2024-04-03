@@ -1,0 +1,68 @@
+.button-child {
+    height: 44px;
+    width: 170px;
+    position: relative;
+    border-radius: var(--br-21xl);
+    background-color: var(--color-lightseagreen);
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+  .add-task {
+    position: relative;
+    font-weight: 800;
+    display: inline-block;
+    min-width: 92px;
+    z-index: 1;
+  }
+  .button,
+  .form-parent {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .button {
+    border-radius: var(--br-21xl);
+    background-color: var(--color-lightseagreen);
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.3);
+    flex-direction: row;
+    align-items: flex-start;
+    padding: var(--padding-3xs) 39px;
+    white-space: nowrap;
+  }
+  .form-parent {
+    align-self: stretch;
+    width: 400px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 29px;
+    max-width: 100%;
+  }
+  .desktop-1,
+  .desktop-1-inner {
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+  }
+  .desktop-1-inner {
+    align-self: stretch;
+    height: 597px;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 var(--padding-xl);
+    max-width: 100%;
+    text-align: left;
+    font-size: var(--font-size-xl);
+    color: var(--color-black);
+    font-family: var(--font-inter);
+  }
+  .desktop-1 {
+    width: 100%;
+    position: relative;
+    background-color: var(--color-white);
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 0 107px;
+    letter-spacing: normal;
+  }
+  
+  
