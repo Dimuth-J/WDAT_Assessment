@@ -1,24 +1,59 @@
 import express, { Request, Response } from 'express';
 
+import { trashTaskJoiSchema } from '../validations/taskvalidation';
 import Task from '../model/TaskModel';
 import TrashTask from '../model/TrashTask'
 
 
+// Assuming you have these custom error classes somewhere in your project
+class DatabaseError extends Error {
+  constructor(message: string) {
+      super(message);
+      this.name = "DatabaseError";
+  }
+}
+
+class ApplicationError extends Error {
+  constructor(message: string, public statusCode: number) {
+      super(message);
+      this.name = "ApplicationError";
+  }
+}
+
 export const createTask = async (req: Request, res: Response): Promise<void> => {
+  // Validate the request body against the Joi schema
+  const { error, value } = trashTaskJoiSchema.validate(req.body);
+
+  if (error) {
+    res.status(400).json({ message: error.details[0].message });
+    return;
+  }
+
   try {
+    // Create a new Task using validated and possibly sanitized value
     const newTask = new Task({
-        taskName: req.body.taskName,
-        message: req.body.message,
-        status: req.body.status,
-        date: req.body.date,
+      taskName: value.taskName,
+      message: value.message,
+      status: value.status,
+      date: value.date,
     });
 
     const savedTask = await newTask.save();
     res.status(201).json(savedTask);
   } catch (error) {
-    res.status(400).json({ message: error });
+    console.error(error);
+
+    // Handle specific error types differently
+    if (error instanceof DatabaseError) {
+      res.status(500).json({ message: "There was a problem saving the task to the database." });
+    } else if (error instanceof ApplicationError) {
+      res.status(error.statusCode).json({ message: error.message });
+    } else {
+      res.status(500).json({ message: "An unexpected error occurred." });
+    }
   }
 };
+
 
 export const getAllTasks = async (req: Request, res: Response): Promise<void> => {
     try {

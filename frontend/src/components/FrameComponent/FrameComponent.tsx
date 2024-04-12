@@ -6,7 +6,7 @@ const FrameComponent: FunctionComponent = () => {
     <section className="navigation-wrapper">
       <div className="navigation w-100">
 
-        <a href="../Home" className="rectangle-group ">
+        <a href="../" className="rectangle-group ">
             <div className="frame-item" />
             <div className="add-task1 text-light">ADD Task</div>
         </a>

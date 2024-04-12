@@ -47,6 +47,12 @@ const Form: React.FC = () => {
     })
     .catch(error => {
       console.error('There was an error creating the task:', error);
+      // Display a Swal alert with the error message
+      Swal.fire({
+        title: "Oops...",
+        text: error.toString(),
+        icon: "error"
+      });
     });
   };
 
